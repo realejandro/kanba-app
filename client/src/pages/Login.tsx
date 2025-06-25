@@ -30,13 +30,24 @@ const Login = () => {
   };
 
   return (
-    <div className='container'>
-      <form className='form' onSubmit={handleSubmit}>
+    <div className='container' style={{ 
+      display:"flex", 
+      flexDirection:"column", 
+      justifyContent:"center", 
+      alignItems:"center", 
+      width:"90vw"}}
+      >
+      <form 
+        className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4" 
+        onSubmit={handleSubmit}
+        style={{color:"white"}}
+        >
         <h1>Login</h1>
         <label >Username</label>
         <input 
           type='text'
           name='username'
+          className="input"
           value={loginData.username || ''}
           onChange={handleChange}
         />
@@ -44,10 +55,16 @@ const Login = () => {
         <input 
           type='password'
           name='password'
+          className="input"
           value={loginData.password || ''}
           onChange={handleChange}
         />
-        <button type='submit'>Submit Form</button>
+        <button 
+          className="btn btn-neutral mt-4" 
+          type='submit'
+        >
+          Submit Form
+        </button>
       </form>
     </div>
     

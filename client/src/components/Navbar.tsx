@@ -17,23 +17,28 @@ const Navbar = () => {
   }, [loginCheck])
 
   return (
-    <div className='nav'>
-      <div className='nav-title'>
+    <div className="navbar bg-base-100 shadow-sm">
+      <div className='nav-title navbar-start'>
         <Link to='/'>Krazy Kanban Board</Link>
       </div>
-      <ul>
+      <div className='navbar-center'></div>
+      <ul className='navbar-end'>
       {
         !loginCheck ? (
-          <li className='nav-item'>
+          <li className='nav-item' >
             <button type='button'>
-              <Link to='/login'>Login</Link>
+              <Link to='/login'style={{color:"white"}}>Login</Link>
             </button>
           </li>
         ) : (
           <li className='nav-item'>
-            <button type='button' onClick={() => {
+            <button type='button'
+              style={{color:"white"}} 
+              onClick={() => {
               auth.logout();
-            }}>Logout</button>
+            }}>
+              Logout
+            </button>
           </li>
         )
       }
