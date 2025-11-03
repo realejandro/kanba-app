@@ -1,9 +1,5 @@
 import { Client } from '../../../interfaces/ClientData'
 
-interface ClientArr {
-    clients: Client[];
-}
-
 export const ClientTableBody = ( { id, description, name, email, phoneNumber, current } : Client ) => {
   return (
     <div className="overflow-x-auto">
