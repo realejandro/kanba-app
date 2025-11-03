@@ -1,25 +1,27 @@
 import { Link } from 'react-router-dom';
-
 import { TicketData } from '../interfaces/TicketData';
 import { ApiMessage } from '../interfaces/ApiMessage';
 import { MouseEventHandler } from 'react';
+import { DELETE_TICKET } from '../utils/schema/mutations';
+import { useMutation } from '@apollo/client/react';
+import { GET_TICKETS } from '../utils/schema/queries';
 
 interface TicketCardProps {
   ticket: TicketData;
-  deleteTicket: (ticketId: number) => Promise<ApiMessage>
 }
 
-const TicketCard = ({ ticket, deleteTicket }: TicketCardProps) => {
+const TicketCard = ({ ticket }: TicketCardProps) => {
+
+  const [ deleteTicket ] = useMutation(DELETE_TICKET, {
+    refetchQueries:[{ query: GET_TICKETS }]
+  })
 
   const handleDelete: MouseEventHandler<HTMLButtonElement> = async (event) => {
     const ticketId = Number(event.currentTarget.value);
-    if (!isNaN(ticketId)) {
-      try {
-        const data = await deleteTicket(ticketId);
-        return data;
-      } catch (error) {
-        console.error('Failed to delete ticket:', error);
-      }
+    try {
+      await deleteTicket({ variables: { id: ticketId } })
+    } catch (error) {
+      console.log(error)
     }
   };
 
@@ -35,3 +37,4 @@ const TicketCard = ({ ticket, deleteTicket }: TicketCardProps) => {
 };
 
 export default TicketCard;
+

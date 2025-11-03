@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import auth from '../utils/auth';
 
 const Navbar = () => {
+  
   const [ loginCheck, setLoginCheck ] = useState(false);
 
   const checkLogin = () => {
@@ -17,7 +18,7 @@ const Navbar = () => {
   }, [loginCheck])
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar w-full bg-base-100 shadow-sm">
       <div className='nav-title navbar-start'>
         <Link to='/'>Krazy Kanban Board</Link>
       </div>
@@ -25,13 +26,13 @@ const Navbar = () => {
       <ul className='navbar-end'>
       {
         !loginCheck ? (
-          <li className='nav-item' >
+          <li >
             <button type='button'>
               <Link to='/login'style={{color:"white"}}>Login</Link>
             </button>
           </li>
         ) : (
-          <li className='nav-item'>
+          <li>
             <button type='button'
               style={{color:"white"}} 
               onClick={() => {

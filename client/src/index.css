@@ -33,15 +33,17 @@ a:hover {
   color: #535bf2;
 }
 
+
 body {
   background: #ECF0F1;
   background-size: cover;
   background-repeat: no-repeat no-repeat;
   background-position: center center;
   margin: 0;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden; /* Use carefully */
 }
 
 h1 {
@@ -57,6 +59,7 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color:#ECF0F1;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -86,40 +89,6 @@ tbody tr:nth-child(odd) {
   background-color: #333333;
 }
 
-/* Navbar Content */
-.nav {
-  display: flex;
-  padding: 1em 2em;
-}
-
-.nav ul {
-  display: flex;
-  margin-left: auto;
-  flex-direction: row;
-}
-
-.nav-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: larger;
-  font-weight: 900;
-}
-
-.nav-title a {
-  color: #b864c4;
-}
-
-.nav-item {
-  display: block;
-  margin-left: auto;
-  list-style: none;
-}
-
-.nav-link {
-  color: #fff;
-  text-decoration: none;
-}
 
 .active {
   font-weight: 700;
@@ -141,7 +110,7 @@ tbody tr:nth-child(odd) {
 .swim-lane {
   text-align: center;
   font-weight: 500;
-  width: 33%;
+  width: 95%;
   height: 90vh; 
   border: 1px solid rgba(0, 0, 0, 0.2);
   margin: 5px;

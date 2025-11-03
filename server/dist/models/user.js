@@ -6,6 +6,9 @@ export class User extends Model {
         const saltRounds = 10;
         this.password = await bcrypt.hash(password, saltRounds);
     }
+    async checkPassword(password) {
+        return await bcrypt.compare(password, this.password);
+    }
 }
 export function UserFactory(sequelize) {
     User.init({

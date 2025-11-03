@@ -1,11 +1,18 @@
 import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createTicket } from '../api/ticketAPI';
 import { TicketData } from '../interfaces/TicketData';
 import { UserData } from '../interfaces/UserData';
 import { retrieveUsers } from '../api/userAPI';
+import { useMutation } from '@apollo/client/react';
+import { CREATE_TICKET } from '../utils/schema/mutations';
+import { GET_TICKETS } from '../utils/schema/queries';
 
 const CreateTicket = () => {
+  const [createTicket] = useMutation<TicketData>(CREATE_TICKET, {
+    refetchQueries: [{
+      query: GET_TICKETS
+    }]
+  })
   const [newTicket, setNewTicket] = useState<TicketData | undefined>(
     {
       id: 0,
@@ -37,8 +44,13 @@ const CreateTicket = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (newTicket){
-      const data = await createTicket(newTicket);
+      const data = await createTicket({
+        variables : {
+          ...newTicket
+        }
+      });
       console.log(data);
+      console.log(newTicket)
       navigate('/');
     }
   }
@@ -105,7 +117,7 @@ const CreateTicket = () => {
             <textarea 
               id='tUserId'
               name='assignedUserId'
-              value={newTicket?.assignedUserId || 0}
+              value={Number(newTicket?.assignedUserId) || 0}
               onChange={handleTextAreaChange}
             />
             )
