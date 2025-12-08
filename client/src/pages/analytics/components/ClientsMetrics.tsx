@@ -6,6 +6,7 @@ import { DELETE_CLIENT } from '../../../utils/schema/mutations'
 import { ClientTable } from './ClientTable'
 import { ClientTableHead } from './ClientTableHead'
 import { ClientModal } from './ClientModal'
+import { ClientsChart } from './ClientsChart'
 
 interface GetClientsData {
   clients: Client[]
@@ -44,20 +45,22 @@ export const ClientsMetrics = () => {
           <ClientModal/>
         </div>
         <div className="overflow-x-auto">
-        <table className="table table-zebra">
-          <ClientTableHead/>
-          { 
-            clients?.map( (client : Client) => {
-              return(
-                    <ClientTable 
-                      { ...client }
-                      key={client.id}
-                    />
-              )
-            })
-          }
+          <table className="table table-zebra">
+            <ClientTableHead/>
+            { 
+              clients?.map( (client : Client) => {
+                console.log(client.createdAt)
+                return(
+                      <ClientTable 
+                        { ...client }
+                        key={client.id}
+                      />
+                )
+              })
+            }
           </table>
           </div>
+          <ClientsChart />
       </div>
     </div>
   )

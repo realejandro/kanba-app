@@ -25,6 +25,10 @@ export function UserFactory(sequelize) {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        profileImg: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        }
     }, {
         tableName: 'users',
         sequelize,

@@ -7,7 +7,9 @@ interface ClientAttributes {
     phoneNumber: string,
     description: string,
     clientType: 'Company' | 'Person',
-    current: boolean 
+    current: boolean,
+    createdAt?: Date
+
 }
 
 
@@ -19,6 +21,9 @@ export class Client extends Model<ClientAttributes, Optional<ClientAttributes, '
     public description !: string;
     public clientType !: 'Company' | 'Person';
     public current !: boolean;
+
+    public readonly createdAt!: Date;
+
 }
 
 export function ClientFactory( sequelize:Sequelize ): typeof Client {

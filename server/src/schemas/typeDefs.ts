@@ -2,7 +2,8 @@ const typeDefs = `
   type User {
     id: Int,
     username: String,
-    password: String
+    password: String,
+    profileImg:String
   }
 
   type Comment {
@@ -36,7 +37,8 @@ const typeDefs = `
     phoneNumber: String,
     description: String,
     clientType: String,
-    current: Boolean 
+    current: Boolean,
+    createdAt: String 
   }
 
   type Auth {

@@ -22,6 +22,7 @@ export const GET_CLIENTS = gql`
       description
       current
       clientType
+      createdAt
     }
   }
 `

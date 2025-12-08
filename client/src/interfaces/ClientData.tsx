@@ -6,4 +6,5 @@ export interface Client {
   description:string;
   current: boolean;
   clientType:string;
+  createdAt: Date;
 }
